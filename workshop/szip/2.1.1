@@ -1,0 +1,11 @@
+#%Module -*- tcl -*-
+## This is a module for: szip v2.1.1
+
+module-whatis "szip v2.1.1 GNU"
+
+set basedir "/workshop/software/szip/2.1.1"
+
+prepend-path    LD_LIBRARY_PATH "${basedir}/lib"
+prepend-path    LIBRARY_PATH    "${basedir}/lib"
+prepend-path    LD_RUN_PATH     "${basedir}/lib"
+prepend-path    CPATH           "${basedir}/include"
