@@ -1,11 +1,12 @@
 #%Module -*- tcl -*-
-## This is a module for: szip v2.1.1
+## This is a module for: hdf5 v1.14.6
 
-module-whatis "szip v2.1.1 GNU"
+module-whatis "hdf5 v1.14.6 parallel GNU"
 
 set home $::env(HOME)
-set basedir "${home}/software/szip/2.1.1"
+set basedir "${home}/software/hdf5/1.14.6"
 
+prepend-path    PATH            "${basedir}/bin"
 prepend-path    LD_LIBRARY_PATH "${basedir}/lib"
 prepend-path    LIBRARY_PATH    "${basedir}/lib"
 prepend-path    LD_RUN_PATH     "${basedir}/lib"

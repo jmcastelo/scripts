@@ -1,10 +1,10 @@
 #%Module -*- tcl -*-
-## This is a module for: szip v2.1.1
+## This is a module for: slepc v3.24.0
 
-module-whatis "szip v2.1.1 GNU"
+module-whatis "slepc v3.24.0 GNU"
 
 set home $::env(HOME)
-set basedir "${home}/software/szip/2.1.1"
+set basedir "${home}/software/slepc/3.24.0"
 
 prepend-path    LD_LIBRARY_PATH "${basedir}/lib"
 prepend-path    LIBRARY_PATH    "${basedir}/lib"

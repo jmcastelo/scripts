@@ -1,10 +1,10 @@
 #%Module -*- tcl -*-
-## This is a module for: szip v2.1.1
+## This is a module for: openblas v0.3.30
 
-module-whatis "szip v2.1.1 GNU"
+module-whatis "openblas v0.3.30 serial GNU"
 
 set home $::env(HOME)
-set basedir "${home}/software/szip/2.1.1"
+set basedir "${home}/software/openblas/0.3.30"
 
 prepend-path    LD_LIBRARY_PATH "${basedir}/lib"
 prepend-path    LIBRARY_PATH    "${basedir}/lib"

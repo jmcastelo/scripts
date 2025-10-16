@@ -1,11 +1,12 @@
 #%Module -*- tcl -*-
-## This is a module for: szip v2.1.1
+## This is a module for: netcdf-fortran v4.6.2
 
-module-whatis "szip v2.1.1 GNU"
+module-whatis "netcdf-fortran v4.6.2 parallel GNU"
 
 set home $::env(HOME)
-set basedir "${home}/software/szip/2.1.1"
+set basedir "${home}/software/netcdf-fortran/4.6.2"
 
+prepend-path    PATH            "${basedir}/bin"
 prepend-path    LD_LIBRARY_PATH "${basedir}/lib"
 prepend-path    LIBRARY_PATH    "${basedir}/lib"
 prepend-path    LD_RUN_PATH     "${basedir}/lib"

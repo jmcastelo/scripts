@@ -1,8 +1,9 @@
 #!/bin/bash
 
 BASEDIR="${HOME}/software"
+PREFIX="${BASEDIR}/libxc/6.2.2"
 
-PREFIX="${BASEDIR}/zlib/1.3.1"
+autoreconf -i
 
 ./configure \
 --prefix=${PREFIX}
