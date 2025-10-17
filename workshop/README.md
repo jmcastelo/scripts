@@ -1,5 +1,13 @@
 # Instructions
 
+Our objective is to build YAMBO with (almost) all its dependencies as well.
+
+We will create some directories in our home directory (that's what the tilde `~` stands for), to keep all the required data. We will clone this repository, which contains, under the `workshop` (this) directory all scripts required to configure the build of the dependencies, and also their respective module files. Each configuration script has been tested within the system where the workshop is taking place, and should work for the version of its corresponding code. As for the module files, they can be loaded to modify our shell environment and make their associated software/libraries available for us to keep building against them, even if it is not strictly neeed in most cases, since we will specify the paths of the dependencies in the configuration scripts.
+
+After cloning the repository, we will start building the dependecies. Instructions for the first one are given below. For the rest, we give just the commands.
+
+Let's start!
+
 ## Create directories
 
 To get source code:
@@ -72,9 +80,11 @@ And see if it gets correctly detected:
 
 `module avail`
 
-If so, let's load it:
+If so, let's load it to set our environment capable of using this dependency for the compilation of further dependencies:
 
 `module load zlib/1.3.1`
+
+This ends our first dependency build. For the rest, we will just give the commands without textual instructions if they are analogous to those we have just covered.
 
 ## szip v2.1.1
 
