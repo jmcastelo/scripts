@@ -504,4 +504,4 @@ And let's see if it works:
 
 `which yambo`
 
-`yambo`
+`yambo --version`
