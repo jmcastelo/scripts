@@ -447,3 +447,21 @@ This is a packed file using bzip compression, so we need to unpack it using the 
 `git clone https://github.com/yambo-code/yambo.git`
 
 `cd yambo`
+
+We will build the code present in branch 5.3, so we need to switch to that branch:
+
+`git switch 5.3`
+
+`cp ~/scripts/workshop/yambo/yambo_gnu_configure.sh .`
+
+`cat -n yambo_gnu_configure.sh`
+
+`./yambo_gnu_configure`
+
+Read carefully the output of the configuration scripts. All options should have been taken into account (noted by a [X] symbol) and all libraries should have been detected (noted by the [E] symbol). Those libraries which were not detected as already existing, will be compiled (noted by the [C] symbol).
+
+Let's cross fingers and build the core:
+
+`make core`
+
+Ooops! There was a compilation error. Fortunately, after asking in YAMBO forum, we got a fix:
