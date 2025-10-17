@@ -114,4 +114,32 @@ This ends our first dependency build. For the rest, we will just give the comman
 
 `wget https://docs.hdfgroup.org/archive/support/ftp/lib-external/szip/2.1.1/src/szip-2.1.1.tar.gz`
 
+`tar xzvf szip-2.1.1.tar.gz`
 
+`cd szip-2.1.1.tar.gz`
+
+`cp ~/scripts/workshop/szip/szip_gnu_configure.sh .`
+
+`cat -n szip_gnu_configure.sh`
+
+`./szip_gnu_configure.sh`
+
+`make`
+
+`make check`
+
+`make install`
+
+`ls -R ~/software/szip/2.1.1`
+
+`mkdir ~/my-module-files/szip`
+
+`cp ~/scripts/workshop/szip/2.1.1 ~/my-module-files/szip/`
+
+`module avail`
+
+`module show szip/2.1.1`
+
+`module load szip/2.1.1`
+
+`module list`
