@@ -4,12 +4,12 @@ export PETSC_DIR="${PWD}"
 
 BASEDIR="${HOME}/software"
 
-PREFIX="${BASEDIR}/petsc/3.24.0"
+PREFIX="${BASEDIR}/petsc/3.22.5"
 
 FFTWDIR="${BASEDIR}/fftw/3.3.10"
 OBLASDIR="${BASEDIR}/openblas/0.3.30"
 SLDIR="${BASEDIR}/scalapack/2.2.2"
-H5DIR="${BASEDIR}/phdf5/1.14.6"
+H5DIR="${BASEDIR}/hdf5/1.14.6"
 NCDIR="${BASEDIR}/netcdf-c/4.9.3"
 ZLIBDIR="${BASEDIR}/zlib/1.3.1"
 

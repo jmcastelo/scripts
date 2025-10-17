@@ -345,3 +345,17 @@ See the changes we made:
 `module show fftw/3.3.10`
 
 `module load fftw/3.3.10`
+
+## PETSc v3.22.5
+
+`cd ~/source-code`
+
+`wget https://web.cels.anl.gov/projects/petsc/download/release-snapshots/petsc-3.22.5.tar.gz`
+
+`tar xzvf petsc-3.22.5.tar.gz`
+
+`cd petsc-3.22.5`
+
+`cp ~/scripts/workshop/petsc/petsc_gnu_configure.sh .`
+
+
