@@ -179,3 +179,39 @@ We will skip the tests (`make check`), since they take long and consume many res
 `module load hdf5/1.14.6`
 
 `module list`
+
+## NetCDF-C v4.9.3
+
+`cd ~/source-code`
+
+`wget https://github.com/Unidata/netcdf-c/archive/refs/tags/v4.9.3.tar.gz`
+
+`tar xzvf v4.9.3.tar.gz`
+
+`cd netcdf-c-4.9.3`
+
+`cp ~/scripts/workshop/netcdf-c/netcdf-c_gnu_configure.sh .`
+
+`cat -n netcdf-c_gnu_configure.sh`
+
+`./netcdf-c_gnu_configure.sh`
+
+`make`
+
+We will skip the tests (`make check`), since they take long and consume many resources.
+
+`make install`
+
+`ls -R ~/software/netcdf-c/4.9.3`
+
+`mkdir ~/my-module-files/netcdf-c`
+
+`cp ~/scripts/workshop/netcdf-c/4.9.3 ~/my-module-files/netcdf-c/`
+
+`module avail`
+
+`module show netcdf-c/4.9.3`
+
+`module load netcdf-c/4.9.3`
+
+`module list`
