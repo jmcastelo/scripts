@@ -378,4 +378,32 @@ Lots of files have been installed, so we will just check that the library and th
 
 `module load petsc/3.22.5`
 
+## SLEPc v3.22.2
 
+`cd ~/source-code`
+
+`wget https://slepc.upv.es/download/distrib/slepc-3.22.2.tar.gz`
+
+`tar xzvf slepc-3.22.2.tar.gz`
+
+`cd slepc-3.22.2`
+
+`cp ~/scripts/workshop/slepc/slepc_gnu_configure.sh .`
+
+`cat -n slepc_gnu_configure.sh`
+
+`./slepc_gnu_configure.sh`
+
+As was the case with PETSc, the specific build and install lines are suggested on the output of the commands. Copy, paste and execute them successively.
+
+Let's check that it was correctly installed:
+
+`ls ~/software/slepc/3.22.2/lib ~/software/slepc/3.22.2/include`
+
+`mkdir ~/my-module-files/slepc`
+
+`cp ~/scripts/workshop/slepc/3.22.2 ~/my-module-files/slepc/`
+
+`module show slepc/3.22.2`
+
+`module load slepc/3.22.2`
