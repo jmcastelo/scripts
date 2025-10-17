@@ -116,7 +116,7 @@ This ends our first dependency build. For the rest, we will just give the comman
 
 `tar xzvf szip-2.1.1.tar.gz`
 
-`cd szip-2.1.1.tar.gz`
+`cd szip-2.1.1`
 
 `cp ~/scripts/workshop/szip/szip_gnu_configure.sh .`
 
@@ -141,5 +141,41 @@ This ends our first dependency build. For the rest, we will just give the comman
 `module show szip/2.1.1`
 
 `module load szip/2.1.1`
+
+`module list`
+
+## hdf5 v1.14.6
+
+`cd ~/source-code`
+
+`wget https://github.com/HDFGroup/hdf5/archive/refs/tags/hdf5_1.14.6.tar.gz`
+
+`tar xzvf hdf5_1.14.6.tar.gz`
+
+`cd hdf5-hdf5_1.14.6`
+
+`cp ~/scripts/workshop/hdf5/hdf5_gnu_configure.sh .`
+
+`cat -n hdf5_gnu_configure.sh`
+
+`./hdf5_gnu_configure.sh`
+
+`make`
+
+We will skip the tests (`make check`), since they take long and consume many resources.
+
+`make install`
+
+`ls -R ~/software/hdf5/1.14.6`
+
+`mkdir ~/my-module-files/hdf5`
+
+`cp ~/scripts/workshop/hdf5/1.14.6 ~/my-module-files/hdf5/`
+
+`module avail`
+
+`module show hdf5/1.14.6`
+
+`module load hdf5/1.14.6`
 
 `module list`
