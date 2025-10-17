@@ -3,6 +3,18 @@
 
 module-whatis "yambo v5.3 parallel GNU"
 
+if { ![ is-loaded zlib/1.3.1 ] } { module load zlib/1.3.1 }
+if { ![ is-loaded szip/2.1.1 ] } { module load szip/2.1.1 }
+if { ![ is-loaded hdf5/1.14.6 ] } { module load hdf5/1.14.6 }
+if { ![ is-loaded netcdf-c/4.9.3 ] } { module load netcdf-c/4.9.3 }
+if { ![ is-loaded netcdf-fortran/4.6.2 ] } { module load netcdf-fortran/4.6.2 }
+if { ![ is-loaded openblas/0.3.30 ] } { module load openblas/0.3.30 }
+if { ![ is-loaded scalapack/2.2.2 ] } { module load scalapack/2.2.2 }
+if { ![ is-loaded fftw/3.3.10 ] } { module load fftw/3.3.10 }
+if { ![ is-loaded petsc/3.22.5 ] } { module load petsc/3.22.5 }
+if { ![ is-loaded slepc/3.22.2 ] } { module load slepc/3.22.2 }
+if { ![ is-loaded libxc/6.2.2 ] } { module load libxc/6.2.2 }
+
 set home $::env(HOME)
 set basedir "${home}/software/yambo/5.3"
 
