@@ -358,4 +358,24 @@ See the changes we made:
 
 `cp ~/scripts/workshop/petsc/petsc_gnu_configure.sh .`
 
+`cat -n petsc_gnu_configure.sh`
+
+`./petsc_gnu_configure.sh`
+
+After the configuration has ended, the `configure` script gives us the compilation command, which is `make all` with the `PETSC_DIR` and `PETSC_ARCH` variables set properly. Copy and paste it on your terminal, and execute it.
+
+When compilation has ended, you can install the libraries with the command that is suggested at the end of the build output. It should be similar to the command before, but with `install` argument passed to `make`.
+
+Lots of files have been installed, so we will just check that the library and the headers have been correctly copied:
+
+`ls ~/software/petsc/3.22.5/lib ~/software/petsc/3.22.5/include`
+
+`mkdir ~/my-module-files/petsc`
+
+`cp ~/scripts/workshop/petsc/3.22.5 ~/my-module-files/petsc/`
+
+`module show petsc/3.22.5`
+
+`module load petsc/3.22.5`
+
 
