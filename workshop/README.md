@@ -230,6 +230,8 @@ We will skip the tests (`make check`), since they take long and consume many res
 
 `cat -n netcdf-fortran_gnu_configure.sh`
 
+`./netcdf-fortran_gnu_configure.sh`
+
 `make`
 
 We will skip the tests (`make check`), since they take long and consume many resources.
@@ -314,3 +316,32 @@ See the changes we made:
 
 `module load scalapack/2.2.2`
 
+## FFTW v3.3.10
+
+`cd ~/source-code`
+
+`wget https://fftw.org/fftw-3.3.10.tar.gz`
+
+`tar xzvf fftw-3.3.10.tar.gz`
+
+`cd fftw-3.3.10`
+
+`cp ~/scripts/workshop/fftw/fftw_gnu_configure.sh .`
+
+`cat -n fftw_gnu_configure.sh`
+
+`./fftw_gnu_configure.sh`
+
+`make`
+
+`make install`
+
+`ls -R ~/software/fftw/3.3.10`
+
+`mkdir ~/my-module-files/fftw`
+
+`cp ~/scripts/workshop/fftw/3.3.10 ~/my-module-files/fftw/`
+
+`module show fftw/3.3.10`
+
+`module load fftw/3.3.10`
