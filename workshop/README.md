@@ -10,7 +10,7 @@ Let's start!
 
 ## Create directories
 
-To get source code:
+To store source code:
 
 `mkdir ~/source-code`
 
@@ -60,13 +60,19 @@ If everything looks fine, let's execute it:
 
 `./zlib_gnu_configure.sh`
 
-If the output of the configuration scripts looks fine, let's build and install the dependeny:
+If the execution of the configuration script does not yield any error, let's build the dependency:
 
 `make test`
 
+If compilation was successful, let's install (copy) our new dependency:
+
 `make install`
 
-Finally, if compilation was successfull, create a subdirectory to contain the module file for this dependency and copy the module file:
+Let's check which files were installed:
+
+`ls -R ~/software/zlib/1.3.1`
+
+Now, create a subdirectory to contain the module file for this dependency and copy the module file:
 
 `mkdir ~/my-module-files/zlib`
 
