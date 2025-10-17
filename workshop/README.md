@@ -285,3 +285,32 @@ See the changes we made:
 `module load openblas/0.3.30`
 
 `module list`
+
+## ScaLAPACK v2.2.2
+
+`cd ~/source-code`
+
+`wget https://github.com/Reference-ScaLAPACK/scalapack/archive/v2.2.2.tar.gz`
+
+`tar xzvf v2.2.2.tar.gz`
+
+`cd scalapack-2.2.2`
+
+`cp ~/scripts/workshop/scalapack/SLmake.inc .`
+
+`diff SLmake.inc.example SLmake.inc`
+
+`make lib`
+
+`mkdir -p ~/software/scalapack/2.2.2/lib`
+
+`cp libscalapack.a ~/software/scalapack/2.2.2/lib/`
+
+`mkdir ~/my-module-files/scalapack`
+
+`cp ~/scripts/workshop/scalapack/2.2.2 ~/my-module-files/scalapack/`
+
+`module show scalapack/2.2.2`
+
+`module load scalapack/2.2.2`
+
