@@ -144,7 +144,7 @@ This ends our first dependency build. For the rest, we will just give the comman
 
 `module list`
 
-## hdf5 v1.14.6
+## HDF5 v1.14.6
 
 `cd ~/source-code`
 
@@ -213,5 +213,39 @@ We will skip the tests (`make check`), since they take long and consume many res
 `module show netcdf-c/4.9.3`
 
 `module load netcdf-c/4.9.3`
+
+`module list`
+
+## NetCDF-Fortran
+
+`cd ~/source-code`
+
+`wget https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.2.tar.gz`
+
+`tar xzvf v4.6.2.tar.gz`
+
+`cd netcdf-fortran-4.6.2`
+
+`cp ~/scripts/workshop/netcdf-fortran/netcdf-fortran_gnu_configure.sh .`
+
+`cat -n netcdf-fortran_gnu_configure.sh`
+
+`make`
+
+We will skip the tests (`make check`), since they take long and consume many resources.
+
+`make install`
+
+`ls -R ~/software/netcdf-fortran/4.6.2`
+
+`mkdir ~/my-module-files/netcdf-fortran`
+
+`cp ~/scripts/workshop/netcdf-fortran/4.6.2 ~/my-module-files/netcdf-fortran/`
+
+`module avail`
+
+`module show netcdf-fortran/4.6.2`
+
+`module load netcdf-fortran/4.6.2`
 
 `module list`
