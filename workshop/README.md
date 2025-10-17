@@ -216,7 +216,7 @@ We will skip the tests (`make check`), since they take long and consume many res
 
 `module list`
 
-## NetCDF-Fortran
+## NetCDF-Fortran v4.6.2
 
 `cd ~/source-code`
 
@@ -247,5 +247,41 @@ We will skip the tests (`make check`), since they take long and consume many res
 `module show netcdf-fortran/4.6.2`
 
 `module load netcdf-fortran/4.6.2`
+
+`module list`
+
+## OpenBLAS v0.3.30
+
+`cd ~/source-code`
+
+`wget https://github.com/OpenMathLib/OpenBLAS/archive/refs/tags/v0.3.30.tar.gz`
+
+`tar xzvf v0.3.30.tar.gz`
+
+`cd OpenBLAS-0.3.30`
+
+This dependency does not configure the build with the usual `configure` script, but we have to tweak the `Makefile.rule` file with our own configuration settings. Let's back it up and copy the modified file:
+
+`mv Makefile.rule Makefile.rule.bak`
+
+`cp ~/scripts/workshop/openblas/Makefile.rule .`
+
+See the changes we made:
+
+`diff Makefile.rule.bak Makefile.rule`
+
+`make`
+
+`make install`
+
+`ls -R ~/software/openblas/0.3.30`
+
+`mkdir ~/my-module-files/openblas`
+
+`cp ~/scripts/workshop/openblas/0.3.30 ~/my-module-files/openblas/`
+
+`module show openblas/0.3.30`
+
+`module load openblas/0.3.30`
 
 `module list`
