@@ -440,7 +440,7 @@ This is a packed file using bzip compression, so we need to unpack it using the 
 
 `module load libxc/6.2.2`
 
-## YAMBO
+## YAMBO v5.3
 
 `cd ~/source-code`
 
@@ -465,3 +465,43 @@ Let's cross fingers and build the core:
 `make core`
 
 Ooops! There was a compilation error. Fortunately, after asking in YAMBO forum, we got a fix:
+
+`cp ~/scripts/workshop/yambo/fix-gcc15/symbols.h include/headers/parser/`
+
+`cp ~/scripts/workshop/yambo/fix-gcc15/PARSER_symbols.c src/parser/`
+
+Let's clean our last build:
+
+`make distclean`
+
+And try again:
+
+`./yambo_gnu_configure.sh`
+
+Note that those libraries which were tagged as [C] in our previous attempt, now are tagged as [I], which means that they were already compiled.
+
+`make core`
+
+Great! Let's look at the compiled binaries:
+
+`ls bin`
+
+And copy them to our software directory:
+
+`mkdir -p ~/software/yambo/5.3/bin`
+
+`cp bin/* ~/software/yambo/5.3/bin/`
+
+Finally, copy the ready-made module file:
+
+`mkdir ~/my-module-files/yambo`
+
+`cp ~/scripts/workshop/yambo/5.3 ~/my-module-files/yambo/`
+
+And let's see if it works:
+
+`module load yambo/5.3`
+
+`which yambo`
+
+`yambo`
