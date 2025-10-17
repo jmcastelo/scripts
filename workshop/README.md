@@ -407,3 +407,35 @@ Let's check that it was correctly installed:
 `module show slepc/3.22.2`
 
 `module load slepc/3.22.2`
+
+## LibXC v6.2.2
+
+`cd ~/source-code`
+
+`wget https://gitlab.com/libxc/libxc/-/archive/6.2.2/libxc-6.2.2.tar.bz2`
+
+This is a packed file using bzip compression, so we need to unpack it using the `j` argument, instead of `z`, which is for gzip decompression.
+
+`tar xjvf libxc-6.2.2.tar.bz2`
+
+`cd libxc-6.2.2`
+
+`cp ~/scripts/workshop/libxc/libxc_gnu_configure.sh .`
+
+`cat -n libxc_gnu_configure.sh`
+
+`./libxc_gnu_configure.sh`
+
+`make`
+
+`make install`
+
+`ls -R ~/software/libxc/6.2.2`
+
+`mkdir ~/my-module-files/libxc`
+
+`cp ~/scripts/workshop/libxc/6.2.2 ~/my-module-files/libxc/`
+
+`module show libxc/6.2.2`
+
+`module load libxc/6.2.2`
