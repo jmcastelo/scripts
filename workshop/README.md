@@ -439,3 +439,11 @@ This is a packed file using bzip compression, so we need to unpack it using the 
 `module show libxc/6.2.2`
 
 `module load libxc/6.2.2`
+
+## YAMBO
+
+`cd ~/source-code`
+
+`git clone https://github.com/yambo-code/yambo.git`
+
+`cd yambo`
