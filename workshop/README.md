@@ -212,6 +212,8 @@ NetCDF = Network Common Data Form
 - Community standard for sharing scientific data.
 - Available for C, C++, Fortran and Java.
 
+This is the C API.
+
 [Official website](https://www.unidata.ucar.edu/software/netcdf)
 
 ### Instructions
@@ -252,6 +254,10 @@ We will skip the tests (`make check`), since they take long and consume many res
 
 ## NetCDF-Fortran v4.6.2
 
+This is the Fortran API of NetCDF.
+
+### Instructions
+
 `cd ~/source-code`
 
 `wget https://github.com/Unidata/netcdf-fortran/archive/refs/tags/v4.6.2.tar.gz`
@@ -287,6 +293,23 @@ We will skip the tests (`make check`), since they take long and consume many res
 `module list`
 
 ## OpenBLAS v0.3.30
+
+Open source library that provides the standard BLAS and LAPACK functions with optimizations for specific processor types.
+
+BLAS (Basic Linear Algebra Subprograms) is a library of routines for basic vector and matrix operations.
+
+LAPACK (Linear Algebra Package) is a library of routines for:
+
+- Solving systems of simultaneous linear equations.
+- Least-squares solutions of linear systems of equations.
+- Eigenvalue problems.
+- Singular value problems.
+
+Official reference versions of BLAS and LAPACK perform quite badly compared to OpenBLAS.
+
+[Official docs](http://www.openmathlib.org/OpenBLAS/docs/)
+
+### Instructions
 
 `cd ~/source-code`
 
