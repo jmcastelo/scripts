@@ -48,6 +48,8 @@ A lossless data-compresion library.
 
 [Official website](https://www.zlib.net)
 
+### Instructions
+
 This is our first dependency we want to build. Follow the instructions below.
 
 Let's change into the directory where we will keep all source code.
@@ -118,6 +120,8 @@ Provides lossless compression of scientific data.
 
 [Official website](https://docs.hdfgroup.org/archive/support/doc_resource/SZIP/index.html)
 
+### Instructions
+
 `cd ~/source-code`
 
 `wget https://docs.hdfgroup.org/archive/support/ftp/lib-external/szip/2.1.1/src/szip-2.1.1.tar.gz`
@@ -156,11 +160,14 @@ Provides lossless compression of scientific data.
 
 HDF = Hierarchical Data Format
 
-- Set of libraries and data formats, designed to store and organize largfe amounts of data.
+- Set of libraries and data formats.
+- Designed to store and organize large amounts of data.
 - An HDF5 files is a container of heterogeneous datasets (images, tables, graphs, documents, etc.)
 - Available for C, C++, Fortran, Java and Python.
 
 [Introduction to HDF5](https://support.hdfgroup.org/documentation/hdf5/latest/_intro_h_d_f5.html)
+
+### Instructions
 
 `cd ~/source-code`
 
@@ -197,6 +204,17 @@ We will skip the tests (`make check`), since they take long and consume many res
 `module list`
 
 ## NetCDF-C v4.9.3
+
+NetCDF = Network Common Data Form
+
+- Set of libraries and data formats.
+- Supports the creation, access and sharing of array-oriented scientific data.
+- Community standard for sharing scientific data.
+- Available for C, C++, Fortran and Java.
+
+[Official website](https://www.unidata.ucar.edu/software/netcdf)
+
+### Instructions
 
 `cd ~/source-code`
 
