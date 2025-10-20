@@ -634,3 +634,7 @@ And let's see if it works:
 `which yambo`
 
 `yambo --version`
+
+We can check against which libraries is our YAMBO executable dinamically linked:
+
+`ldd ~/software/yambo/5.3/bin/yambo`
