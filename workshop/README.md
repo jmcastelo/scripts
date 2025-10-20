@@ -307,7 +307,7 @@ LAPACK (Linear Algebra Package) is a library of routines for:
 
 Official reference versions of BLAS and LAPACK perform quite badly compared to OpenBLAS.
 
-[Official docs](http://www.openmathlib.org/OpenBLAS/docs/)
+[Official docs](http://www.openmathlib.org/OpenBLAS/docs)
 
 ### Instructions
 
@@ -346,6 +346,21 @@ See the changes we made:
 `module list`
 
 ## ScaLAPACK v2.2.2
+
+ScaLAPACK = Scalable LAPACK
+
+Library of high-performance linear algebra routines that are a subset of LAPACK routines redesigned for parallel computers. It is mainly written in Fortran, plus some auxiliary routines written in C.
+
+Due to its parallel and distributed nature, it depends on:
+
+- BLACS (Basic Linear Algebra Communication Subprograms), a library for MPI (message passing interface) oriented to linear algebra.
+- PBLAS (Parallel Basic Linear Algebra Subprograms), an implementation of BLAS for distributed-memory architectures.
+
+These two dependencies are included on ScaLAPACK's source code.
+
+[Official website](https://netlib.org/scalapack)
+
+### Instructions
 
 `cd ~/source-code`
 
