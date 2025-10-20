@@ -390,6 +390,17 @@ These two dependencies are included on ScaLAPACK's source code.
 
 ## FFTW v3.3.10
 
+FFTW = Fastest Fourier Transform in the West
+
+- Collection of routines to compute the discrete Fourier Transform (DFT).
+- Supports multidimensional, arbitrary sized data: complex and real.
+- Can perform parallel computations: OpenMP and MPI.
+- Written in C; available as C and Fortran APIs.
+
+[Official website](https://fftw.org)
+
+### Instructions
+
 `cd ~/source-code`
 
 `wget https://fftw.org/fftw-3.3.10.tar.gz`
@@ -419,6 +430,21 @@ These two dependencies are included on ScaLAPACK's source code.
 `module load fftw/3.3.10`
 
 ## PETSc v3.22.5
+
+PETSc = Portable, Extensible Toolkit for Scientific Computation
+
+Large suite of scalable parallel:
+
+- Linear and nonlinear equation solvers.
+- Ordinary differential equation integrators.
+- Optimization algorithms.
+- Partial differential equation discretizations.
+
+Uses MPI and can be run on GPUs. Available for C, Fortran and Python.
+
+[Official website](https://petsc.org/release)
+
+### Instructions
 
 `cd ~/source-code`
 
@@ -452,6 +478,16 @@ Lots of files have been installed, so we will just check that the library and th
 
 ## SLEPc v3.22.2
 
+SLEPc = Scalable Library for Eigenvalue Problem Computations
+
+Solves large-scale eigenvalue problems on parallel computers, relying on PETSc data structures and linear solvers.
+
+Uses MPI and can be run on GPUs. Available for C, Fortran and Python.
+
+[Official website](https://slepc.upv.es/release)
+
+### Instructions
+
 `cd ~/source-code`
 
 `wget https://slepc.upv.es/download/distrib/slepc-3.22.2.tar.gz`
@@ -481,6 +517,17 @@ Let's check that it was correctly installed:
 `module load slepc/3.22.2`
 
 ## LibXC v6.2.2
+
+Library targeted at density-functional theory (DFT), providing:
+
+- Exchange-correlation functionals.
+- Kinetic energy functionals.
+
+Available for C, Fortran and Python.
+
+[Official website](https://libxc.gitlab.io)
+
+### Instructions
 
 `cd ~/source-code`
 
@@ -513,6 +560,16 @@ This is a packed file using bzip compression, so we need to unpack it using the 
 `module load libxc/6.2.2`
 
 ## YAMBO v5.3
+
+YAMBO is an open-source code released within the GPL licence, implementing first-principles methods based on Green’s function theory to describe excited-state properties of realistic materials. These methods include the GW approximation, the Bethe-Salpeter equation (BSE), electron-phonon interaction and non-equilibrium Green’s function theory (NEGF).
+
+Some resources:
+
+- [Official website](https://www.yambo-code.eu)
+- [YAMBO wiki: Installation](https://wiki.yambo-code.eu/wiki/index.php?title=Installation)
+- [YAMBO Forum](https://www.yambo-code.eu/forum)
+
+### Instructions
 
 `cd ~/source-code`
 
