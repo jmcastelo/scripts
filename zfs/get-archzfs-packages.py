@@ -84,6 +84,7 @@ def get_pkg_names(archzfs_linux_url: str, archzfs_utils_url: str) -> dict:
     match = re.search(r'zfs-linux-[0-9][^_]+_([^/]+)(\.pkg\.tar\.zst)$', archzfs_linux_url)
     if match:
         archzfs_linux_version = match.group(1)
+        # Remove the '.N' (N=1,2...) suffix from archzfs package name (only difference between names)
         arch_linux_version = re.sub(r'(\.arch\d)\.\d+\b', r'\1', match.group(1))
         extension = match.group(2)
 
@@ -101,6 +102,15 @@ def get_pkg_names(archzfs_linux_url: str, archzfs_utils_url: str) -> dict:
 
 
 if __name__ == "__main__":
+
+    """
+    Goal: to download latest archzfs packages and associated Arch Linux kernel and headers.
+    Later: use those packages to update system with pacman.
+    How:
+        1. Query the GitHub repository of archzfs for download URLs of zfs-linux and zfs-utils releases.
+        2. Identify the associated Arch Linux kernel and headers package names.
+        3. Finally download all packages from GitHub and the Arch Linux archive to the current directory.
+    """
 
     # Get archzfs package download urls
 
