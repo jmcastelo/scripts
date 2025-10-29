@@ -1,0 +1,93 @@
+---
+- name: Copy NUT config files to head node
+  hosts: headnode
+  become: true
+  vars:
+    src_dir: "{{ lookup('ansible.builtin.env', 'HOME') }}/nut/timed_shutdown/primary"
+
+  tasks:
+    - name: Copy nut.conf
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/nut.conf'
+        dest: /etc/nut/nut.conf
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copy ups.conf
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/ups.conf'
+        dest: /etc/nut/ups.conf
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copy ups.users
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/ups.users'
+        dest: /etc/nut/ups.users
+        owner: root
+        group: nut
+        mode: '0640'
+    - name: Copy upsd.conf
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/upsd.conf'
+        dest: /etc/nut/upsd.conf
+        owner: root
+        group: nut
+        mode: '0640'
+    - name: Copy upsmon.conf
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/upsmon.conf'
+        dest: /etc/nut/upsmon.conf
+        owner: root
+        group: nut
+        mode: '0640'
+    - name: Copy upssched.conf
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/upssched.conf'
+        dest: /etc/nut/upssched.conf
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copy upssched-cmd
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/upssched-cmd'
+        dest: /usr/local/bin/upssched-cmd
+        owner: nut
+        group: nut
+        mode: '0744'
+
+- name: Copy NUT config files to compute nodes
+  hosts: computenodes
+  become: true
+  vars:
+    src_dir: "{{ lookup('ansible.builtin.env', 'HOME') }}/nut/timed_shutdown/secondary"
+
+  tasks:
+    - name: Copy nut.conf
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/nut.conf'
+        dest: /etc/nut/nut.conf
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copy upsmon.conf
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/upsmon.conf'
+        dest: /etc/nut/upsmon.conf
+        owner: root
+        group: nut
+        mode: '0640'
+    - name: Copy upssched.conf
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/upssched.conf'
+        dest: /etc/nut/upssched.conf
+        owner: root
+        group: root
+        mode: '0644'
+    - name: Copy upssched-cmd
+      ansible.builtin.copy:
+        src: '{{ src_dir }}/upssched-cmd'
+        dest: /usr/local/bin/upssched-cmd
+        owner: nut
+        group: nut
+        mode: '0744'

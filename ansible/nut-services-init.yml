@@ -1,0 +1,58 @@
+---
+- name: Initialize NUT services on head node
+  hosts: headnode
+  become: true
+
+  tasks:
+    - name: Start upsdrvctl
+      ansible.builtin.command: /usr/bin/upsdrvctl start
+
+    - name: Start and enable nut-driver-enumerator.service
+      ansible.builtin.service:
+        name: nut-driver-enumerator.service
+        state: started
+        enabled: true
+    
+    - name: Start and enable nut-server.service
+      ansible.builtin.service:
+        name: nut-server.service
+        state: started
+        enabled: true
+    
+    - name: Start and enable nut-monitor.service
+      ansible.builtin.service:
+        name: nut-monitor.service
+        state: started
+        enabled: true
+    
+    - name: Enable nut.target
+      ansible.builtin.service:
+        name: nut.target
+        enabled: true
+    
+    - name: Enable nut-driver.target
+      ansible.builtin.service:
+        name: nut-driver.target
+        enabled: true
+
+    - name: Start and enable prometheus-nut-exporter.service
+      ansible.builtin.service:
+        name: prometheus-nut-exporter.service
+        state: started
+        enabled: true
+
+- name: Initialize NUT services on compute nodes
+  hosts: computenodes
+  become: true
+
+  tasks:
+    - name: Start and enable nut-monitor.service
+      ansible.builtin.service:
+        name: nut-monitor.service
+        state: started
+        enabled: true
+    
+    - name: Enable nut.target
+      ansible.builtin.service:
+        name: nut.target
+        enabled: true

@@ -1,0 +1,10 @@
+---
+- name: Upgrade compute nodes packages
+  hosts: computenodes
+  become: true
+
+  tasks:
+    - name: Upgrade packages (pacman -Syu)
+      community.general.pacman:
+        update_cache: true
+        upgrade: true

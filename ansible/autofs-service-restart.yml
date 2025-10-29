@@ -1,0 +1,10 @@
+---
+- name: Restart autofs service on compute nodes
+  hosts: computenodes
+  become: true
+
+  tasks:
+    - name: Restart autofs.service
+      ansible.builtin.service:
+        name: autofs.service
+        state: restarted

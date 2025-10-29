@@ -1,0 +1,40 @@
+---
+- name: Set up Prometheus Process Exporter
+  hosts: computenodes
+  become: true
+  vars:
+    src_dir: "{{ lookup('ansible.builtin.env', 'HOME') }}/prometheus/exporters/process_exporter"
+    exe_dir: "process-exporter-0.8.7"
+    cfg_dir: "config"
+
+  tasks:
+    - name: Copy executable
+      ansible.builtin.copy:
+        src: "{{ src_dir }}/{{ exe_dir }}/process-exporter"
+        dest: /usr/local/bin/process-exporter
+        owner: root
+        group: root
+        mode: u=rwx,g=rx,o=rx
+
+    - name: Copy config file
+      ansible.builtin.copy:
+        src: "{{ src_dir }}/{{ cfg_dir }}/process_exporter.yml"
+        dest: /usr/local/etc/process_exporter.yml
+        owner: root
+        group: root
+        mode: u=rw,g=r,o=r
+
+    - name: Copy systemd service unit
+      ansible.builtin.copy:
+        src: "{{ src_dir }}/{{ cfg_dir }}/prometheus-process-exporter.service"
+        dest: /etc/systemd/system/prometheus-process-exporter.service
+        owner: root
+        group: root
+        mode: u=rw,g=r,o=r
+
+    - name: Scan for new unit, enable and start it
+      ansible.builtin.systemd:
+        daemon_reload: true
+        name: prometheus-process-exporter.service
+        enabled: true
+        state: restarted

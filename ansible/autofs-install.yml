@@ -1,0 +1,13 @@
+---
+- name: Install autofs package on compute nodes
+  hosts: computenodes
+  become: true
+  vars:
+    pkg_dir: "{{ lookup('ansible.builtin.env', 'HOME') }}/packages/autofs"
+    pkg_name: "autofs-5.1.9-5-x86_64.pkg.tar.zst"
+
+  tasks:
+    - name: Install autofs package
+      community.general.pacman:
+        name: "{{ pkg_dir }}/{{ pkg_name }}"
+        state: present

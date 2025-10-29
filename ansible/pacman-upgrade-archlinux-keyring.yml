@@ -1,0 +1,11 @@
+---
+- name: Upgrade compute nodes packages
+  hosts: computenodes
+  become: true
+
+  tasks:
+    - name: Upgrade archlinux-keyring package
+      community.general.pacman:
+        name: archlinux-keyring
+        state: latest
+        update_cache: true
