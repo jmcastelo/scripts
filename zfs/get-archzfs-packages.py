@@ -5,11 +5,8 @@ from pathlib import Path
 
 def download_file(url: str, dest: str, chunk_size: int = 8192, timeout: float = 10.0):
     """
-    Download `url` to `dest` (file path). Overwrites if exists.
+    Download url to dest (file path). Overwrites if exists.
     """
-    
-    print(f"Downloading: {url}")
-    print(f"Destination: {dest}")
 
     dest_path = Path(dest)
     
@@ -23,6 +20,13 @@ def download_file(url: str, dest: str, chunk_size: int = 8192, timeout: float = 
 
 
 def download_if_exists(url: str, dest: str, timeout: float = 10.0):
+    """
+    Download url to dest (file path), only if file on url exists.
+    """
+
+    print(f"Downloading: {url}")
+    print(f"Destination: {dest}")
+
     head = requests.head(url, allow_redirects=True, timeout=timeout)
     if head.status_code == 200:
         download_file(url, dest, timeout=timeout)
@@ -31,66 +35,109 @@ def download_if_exists(url: str, dest: str, timeout: float = 10.0):
 
 
 
-# ZFS Linux
+def get_archzfs_pkg_download_urls() -> tuple[str | None, str | None]:
+    """
+    Query GitHub's archzfs repository for the download urls of:
+    zfs-linux and zfs-utils packages.
+    """
 
-zfs_linux_pattern = re.compile(r'/zfs-linux-[0-9][^/]*\.pkg\.tar\.zst?$', re.I)
-zfs_utils_pattern = re.compile(r'/zfs-utils-[0-9][^/]*\.pkg\.tar\.zst?$', re.I)
+    archzfs_linux_url = None
+    archzfs_utils_url = None
 
-zfs_linux_url = ''
-zfs_utils_url = ''
+    archzfs_linux_pattern = re.compile(r'/zfs-linux-[0-9][^/]*\.pkg\.tar\.zst?$', re.I)
+    archzfs_utils_pattern = re.compile(r'/zfs-utils-[0-9][^/]*\.pkg\.tar\.zst?$', re.I)
 
-headers = { 'Accept': 'application/vnd.github+json' }
-url = 'https://api.github.com/repos/archzfs/archzfs/releases/tags/experimental'
+    headers = { 'Accept': 'application/vnd.github+json' }
+    url = 'https://api.github.com/repos/archzfs/archzfs/releases/tags/experimental'
 
-r = requests.get(url, headers=headers)
-r.raise_for_status()
+    r = requests.get(url, headers=headers)
+    r.raise_for_status()
 
-for a in r.json().get('assets', []):
-    download_url = a.get('browser_download_url')
-    if zfs_linux_pattern.search(download_url.strip()):
-        zfs_linux_url = download_url.strip()
-    if zfs_utils_pattern.search(download_url.strip()):
-        zfs_utils_url = download_url.strip()
+    for a in r.json().get('assets', []):
+        download_url = a.get('browser_download_url')
+        if archzfs_linux_pattern.search(download_url.strip()):
+            archzfs_linux_url = download_url.strip()
+        if archzfs_utils_pattern.search(download_url.strip()):
+            archzfs_utils_url = download_url.strip()
 
-
-
-# Packages
-
-zfs_linux_pkg_name = ''
-
-linux_pkg_name = ''
-linux_headers_pkg_name = ''
-
-match = re.search(r'zfs-linux-[0-9][^_]+_([^/]+)(\.pkg\.tar\.zst)$', zfs_linux_url)
-if match:
-    zfs_linux_version = match.group(1)
-    linux_version = re.sub(r'(\.arch\d)\.\d+\b', r'\1', match.group(1))
-    extension = match.group(2)
-
-    zfs_linux_pkg_name = f"zfs-linux-{zfs_linux_version}{extension}"
-    linux_pkg_name = f"linux-{linux_version}{extension}"
-    linux_headers_pkg_name = f"linux-headers-{linux_version}{extension}"
-
-
-match = re.search(r'(zfs-utils-[0-9][^/]*\.pkg\.tar\.zst)?$', zfs_utils_url)
-
-zfs_utils_pkg_name = match.group(1)
+    return (archzfs_linux_url, archzfs_utils_url)
 
 
 
-# Download URLs
+def get_pkg_names(archzfs_linux_url: str, archzfs_utils_url: str) -> dict:
+    """
+    Parse archzfs download urls to get names of corresponding packages.
+    """
+
+    pkg_names = {
+        'archzfs_linux': None,
+        'archzfs_utils': None,
+        'arch_linux': None,
+        'arch_linux_headers': None
+    }
+
+    zfs_linux_pkg_name = ''
+
+    linux_pkg_name = ''
+    linux_headers_pkg_name = ''
+
+    match = re.search(r'zfs-linux-[0-9][^_]+_([^/]+)(\.pkg\.tar\.zst)$', archzfs_linux_url)
+    if match:
+        archzfs_linux_version = match.group(1)
+        arch_linux_version = re.sub(r'(\.arch\d)\.\d+\b', r'\1', match.group(1))
+        extension = match.group(2)
+
+        pkg_names['archzfs_linux'] = f"zfs-linux-{archzfs_linux_version}{extension}"
+        pkg_names['arch_linux'] = f"linux-{arch_linux_version}{extension}"
+        pkg_names['arch_linux_headers'] = f"linux-headers-{arch_linux_version}{extension}"
+
+
+    match = re.search(r'(zfs-utils-[0-9][^/]*\.pkg\.tar\.zst)?$', archzfs_utils_url)
+    if match:
+        pkg_names['archzfs_utils'] = match.group(1)
+
+    return pkg_names
+
+
+
+if __name__ == "__main__":
+
+    # Get archzfs package download urls
+
+    archzfs_linux_url, archzfs_utils_url = get_archzfs_pkg_download_urls()
+    
+    # And all package names
+
+    if archzfs_linux_url is not None and archzfs_utils_url is not None:
+
+        pkg_names = get_pkg_names(archzfs_linux_url, archzfs_utils_url)
+
+        if all(name is not None for name in pkg_names.values()):
+            # Construct arch linux archive download urls
  
-linux_pkg_url = f"https://archive.archlinux.org/packages/l/linux/{linux_pkg_name}"
-linux_headers_pkg_url = f"https://archive.archlinux.org/packages/l/linux-headers/{linux_headers_pkg_name}"
+            arch_linux_pkg_url = f"https://archive.archlinux.org/packages/l/linux/{pkg_names['arch_linux']}"
+            arch_linux_headers_pkg_url = f"https://archive.archlinux.org/packages/l/linux-headers/{pkg_names['arch_linux_headers']}"
 
-linux_pkg_dest_path = f"./{linux_pkg_name}"
-linux_headers_pkg_dest_path = f"./{linux_headers_pkg_name}"
+            # And destination file paths
 
-zfs_linux_pkg_dest_path = f"./{zfs_linux_pkg_name}"
-zfs_utils_pkg_dest_path = f"./{zfs_utils_pkg_name}"
+            arch_linux_pkg_dest_path = f"./{pkg_names['arch_linux']}"
+            arch_linux_headers_pkg_dest_path = f"./{pkg_names['arch_linux_headers']}"
 
-download_if_exists(zfs_linux_url, zfs_linux_pkg_dest_path)
-download_if_exists(zfs_utils_url, zfs_utils_pkg_dest_path)
+            archzfs_linux_pkg_dest_path = f"./{pkg_names['archzfs_linux']}"
+            archzfs_utils_pkg_dest_path = f"./{pkg_names['archzfs_utils']}"
 
-download_if_exists(linux_pkg_url, linux_pkg_dest_path)
-download_if_exists(linux_headers_pkg_url, linux_headers_pkg_dest_path)
+            # Then, download packages
+
+            download_if_exists(archzfs_linux_url, archzfs_linux_pkg_dest_path)
+            download_if_exists(archzfs_utils_url, archzfs_utils_pkg_dest_path)
+
+            download_if_exists(arch_linux_pkg_url, arch_linux_pkg_dest_path)
+            download_if_exists(arch_linux_headers_pkg_url, arch_linux_headers_pkg_dest_path)
+
+        else:
+            print('Could not get package names!')
+            print(pkg_names)
+
+    else:
+        print('Could not get archzfs package download urls!')
+
